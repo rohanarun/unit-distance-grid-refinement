@@ -24,6 +24,12 @@ Nine generic left points therefore guarantee a point surviving as generic after 
 
 The full conditional proof, including the coefficient-field argument, is in [proof.tex](proof.tex). The normalized data need not themselves arise from a new derivation; the later argument uses the preserved equations. No quantitative replacement for the earlier asymptotic extraction is supplied.
 
+## Common-line branch: 18 edges
+
+If both loci are known to be the same line, three right anchors suffice for the final two-unknown Cramer system and the third radical sign change. Their normalized data cost is five generators, so six left points guarantee a surviving generic point. This branch therefore needs a **6×3 grid, or 18 selected edges**, conditional on the same generic-grid and private-valuation lemmas.
+
+The full rank-two case continues to use 9×4. The new proof section and tests explicitly retain radical independence: a dependent-radical control makes the Cramer determinant vanish. This is a smaller witness for one branch, with no new headline exponent.
+
 ## Reproduce
 
 Use Python 3.11 or 3.12:
@@ -41,7 +47,7 @@ The full argument is in [proof.tex](proof.tex), which has been compiled successf
 
 ## What the tests establish
 
-The five tests check symbolic invariance under the normalization, the second velocity's parallelism, 1,000 seeded exact-rational proposals, the eight-generator accounting, and rejection of the wrong rotation sign. The boundary check shows why eight left points do not suffice for this particular dimension-counting argument.
+The seven tests check symbolic invariance under the normalization, the second velocity's parallelism, 1,000 seeded exact-rational proposals, the eight-generator accounting, and rejection of the wrong rotation sign. The new checks also verify the common-line Cramer solution, third-radical sign subtraction, and six-point survival budget. The boundary check shows why eight left points do not suffice for this particular dimension-counting argument.
 
 These are algebraic checks of the displayed reduction. They do not construct the generic grid, verify the source's ultraproduct lemmas, or prove a new incidence bound.
 
