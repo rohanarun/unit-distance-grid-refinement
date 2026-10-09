@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/openai/math",
+  "commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "files": [
+    {
+      "path": "preprints/A-power-saving-for-planar-unit-distances-September-23-2026/build/sections/07-algebra.tex",
+      "sha256": "5e821f1eee20b854c7d72f35088a69c6f9b77c3e1d303b68c12c26a9256b2555"
+    }
+  ]
+}
