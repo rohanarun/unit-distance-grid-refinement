@@ -94,6 +94,33 @@ the generic-grid extraction and negligible-height passage remain
 asymptotic, and no quantitative replacement is established here.
 
 
+\section{The common-line branch needs only eighteen selected edges}
+Suppose both loci are known to be the same line, so the final system
+has only the two unknowns $h=v\cdot\widetilde H$ and
+$\widetilde A$. Retain all normalization and private-valuation
+hypotheses of the preceding proof. Three right anchors suffice: the first
+two equations determine these unknowns, and the third radical supplies
+the sign-change contradiction. For $j=3$, the normalized data cost is
+$3j-4=5$. Select $N=6$ left points. The same transcendence-degree argument
+leaves a generic point, because
+\[
+ 6d_1-5>6(d_1-1).
+\]
+In the common-line case $d_1=1$. Write the nonzero position rows as
+$p-r_\ell=s_\ell v$. The first two equations have coefficient matrix
+\[
+ \begin{pmatrix}2s_1&-R_1\\2s_2&-R_2\end{pmatrix}
+\]
+and determinant $2(s_2R_1-s_1R_2)$. This is nonzero by the independent
+single-radical basis and $s_1,s_2\ne0$. Cramer's rule places $h$ and
+$\widetilde A$ in the field of the first two radicals. Flipping only
+$R_3$ in the third equation and subtracting forces
+$\widetilde A=\widetilde A'_3$, contrary to the preserved nonzero
+scalar difference. Thus a $6$-by-$3$ witness, or eighteen edges, suffices
+for this branch, conditional on the same source lemmas. The rank-two
+branch still uses the preceding $9$-by-$4$ witness. This case distinction
+does not yield a new incidence exponent.
+
 \paragraph{Reproducibility.}
 The accompanying README documents \texttt{python -B run\_checks.py}.
 The scripts, source manifest, and test expectations are in this repository.

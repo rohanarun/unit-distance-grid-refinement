@@ -49,5 +49,31 @@ class GaugeProofTests(unittest.TestCase):
         omega=v.dot(J*d)/d.dot(d)
         self.assertNotEqual((v+omega*J*d).dot(J*d),0)
 
+    def test_line_case_cramer_and_sign_flip(self):
+        s1,s2,s3,R1,R2,R3,u1,u2,u3,A1,A2,A3=s.symbols('s1 s2 s3 R1 R2 R3 u1 u2 u3 A1 A2 A3')
+        matrix=s.Matrix([[2*s1,-R1],[2*s2,-R2]])
+        det=s.expand(matrix.det())
+        self.assertEqual(det.coeff(R1),2*s2)
+        self.assertEqual(det.coeff(R2),-2*s1)
+        rhs=s.Matrix([2*u1-R1*A1,2*u2-R2*A2])
+        h,A=matrix.inv()*rhs
+        self.assertEqual(s.simplify(matrix*s.Matrix([h,A])-rhs),s.zeros(2,1))
+        residual=2*s3*h-R3*A-(2*u3-R3*A3)
+        difference=s.expand(residual.subs(R3,-R3)-residual)
+        self.assertEqual(s.simplify(difference-2*R3*(A-A3)),0)
+        self.assertFalse(h.has(R3) or A.has(R3))
+        # Dependent radicals can make the determinant vanish: independence
+        # is essential, not an omitted hypothesis of the smaller witness.
+        T=s.symbols('T')
+        self.assertEqual(s.expand(det.subs({R1:s1*T,R2:s2*T})),0)
+
+    def test_line_case_survival_budget(self):
+        anchors=3
+        cost=1+2*(anchors-2)+(anchors-1)
+        self.assertEqual(cost,5)
+        self.assertGreater(6-cost,0)
+        self.assertEqual(5-cost,0)
+        self.assertEqual(6*anchors,18)
+
 
 if __name__=='__main__':unittest.main()
