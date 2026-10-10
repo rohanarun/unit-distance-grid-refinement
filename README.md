@@ -1,16 +1,17 @@
 # Unit distances: reducing the final generic grid
 
-An independent, AI-generated research draft prepared with Codex and Claude. We give a conditional reduction of the final algebraic grid in OpenAI's unit-distance argument from **20×5 to 8×4**, or 100 selected edges to 32, with smaller witnesses when a locus is a line.
+An independent, AI-generated research draft prepared with Codex and Claude. We give a conditional reduction of the final algebraic grid in OpenAI's unit-distance argument from **20×5 to 6×5**, or 100 selected edges to 30, with smaller witnesses when a locus is a line.
 
 **This does not improve the headline unit-distance exponent or provide an explicit power saving.** The original generic-grid extraction, negligible-height passage, and private-valuation arguments remain dependencies. Independent mathematical review, formal verification, and literature priority are not claimed.
 
 | branch | grid | edges | previous version |
 |---|---|---|---|
-| general (rank two) | 8×4 | 32 | 9×4 = 36 |
-| one locus is a line (rank two) | 6×4 | 24 | 9×4 = 36 |
+| neither locus is a line | 6×5 | 30 | 8×4 = 32 |
+| general, by normalization alone | 8×4 | 32 | 9×4 = 36 |
+| one locus is a line | 6×4 | 24 | 9×4 = 36 |
 | both loci the same line | 4×3 | 12 | 6×3 = 18 |
 
-A single 8×4 generic grid contains the smaller sub-grids, so one selection covers every case.
+A single 6×5 generic grid contains the 6×4 and 4×3 sub-grids, so one selection of thirty edges covers every case.
 
 ![Progress chart](progress/progress.png)
 
@@ -34,9 +35,13 @@ If either locus is a line, name the sides so the anchors lie on it: $r_\ell=r_1+
 
 If both loci are the same line, three anchors suffice for the two-unknown Cramer system and the third sign change, and the collinear count gives three generators. Four left points suffice: a **4×3 grid, or 12 selected edges**, conditional on the same generic-grid and private-valuation lemmas.
 
-## Why it stops here
+## Thirty edges without a surviving point
 
-The symmetry group is exactly five-dimensional (dilations are not symmetries), so $3j-5$ is the floor for normalizing anchor data. Four anchors are forced in the rank-two case, and the counting $N>\text{cost}$ is sharp for the subadditivity argument. Choosing the derivation to kill anchor data was examined and gives no unconditional saving. See the last section of [proof.tex](proof.tex).
+The normalization route cannot go below 32: its symmetry group is exactly five-dimensional, four anchors are forced, and the count $N>\text{cost}$ is sharp. The 30-edge result uses a different idea. Treat the velocity data of **all** $N+j$ grid vertices as unknowns of one homogeneous linear system: $Nj$ equations, $3(N+j)$ unknowns, and a four-dimensional trivial kernel (translations, rotation, common scalar shift). If the system has no other solutions, the actual data must have $A_i=A'_\ell$, a contradiction. That needs $Nj\ge 3(N+j)-4$, and $6\times5$ is the smallest grid satisfying it.
+
+The rank bound splits by a spanning tree. Expanding a minor multilinearly in the thirty radicals $R_e$ (which are independent over the position field, by the source's private valuations applied once per left point), the coefficient of the tree monomial factors as a tree-incidence determinant times a minor of the **rigidity matrix** of the complete bipartite framework $K_{6,5}$ with the tree edges removed. The complement contains a $K_{4,3}$ core plus four vertices each attached by two edges, so its rank equals the core's rank plus eight. For the core we use Whiteley's kinematic form of the Bolker–Roth theorem: a complete bipartite framework whose sides span the plane has exactly as many nontrivial motions as there are conics through all its joints. Generic grid points on the loci are not on a conic unless both loci are the same conic, and in that case the one conic motion is explicit and still has constant scalar part. Either way the kernel is exactly the constant-scalar space.
+
+This is the only place the note depends on an external theorem beyond the source. Both loci being lines is excluded here and covered by the 6×4 and 4×3 results.
 
 The full conditional proof is in [proof.tex](proof.tex). It compiles with `tectonic proof.tex`. No compiled PDF is bundled.
 
@@ -57,7 +62,7 @@ To regenerate the progress chart (needs `matplotlib`, not a test dependency): `p
 
 ## What the tests establish
 
-The thirteen tests check symbolic invariance under translation, rotation and scaling; that the second velocity becomes exactly $v$ after scaling (1,000 seeded exact-rational proposals); that dilations are *not* a symmetry; the generator budgets 7, 5 and 3 together with the failing boundary counts 7, 5 and 3 left points; that collinear anchors give velocities parallel to the line (symbolic Leibniz rule plus 1,500 exact-rational proposals); the rank-two Cramer determinant's radical coefficients as two-by-two minors and the fourth-radical sign flip; and the common-line Cramer solution, third-radical sign subtraction, and dependent-radical control.
+The twenty-one tests check symbolic invariance under translation, rotation and scaling; that the second velocity becomes exactly $v$ after scaling (1,000 seeded exact-rational proposals); that dilations are *not* a symmetry; the generator budgets 7, 5 and 3 together with the failing boundary counts 7, 5 and 3 left points; that collinear anchors give velocities parallel to the line (symbolic Leibniz rule plus 1,500 exact-rational proposals); the rank-two Cramer determinant's radical coefficients as two-by-two minors and the fourth-radical sign flip; the common-line Cramer solution, third-radical sign subtraction, and dependent-radical control; and, for the joint system, that the chosen spanning tree is spanning and avoids the core, the rigidity ranks 11/19 (generic) and 10/18 (on a circle) of the core, of $K_{6,5}$ and of $K_{6,5}$ minus the tree, the explicit conic motion, the two-edge attachment lemma, and that the full 30×33 system on exact rational data has rank 29 (generic) or 28 (circle) with every kernel vector having constant scalar part, while 7×4 does not.
 
 These are algebraic checks of the displayed reduction. They do not construct the generic grid, verify the source's ultraproduct lemmas, or prove a new incidence bound.
 
