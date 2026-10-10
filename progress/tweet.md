@@ -1,5 +1,19 @@
 # Tweet drafts (one per PR)
 
+## PR #4 — thirty is the floor (Oct 10, 2026)
+
+**Main post (ELI25):**
+
+Tried to push the final grid in OpenAI's unit-distance proof below 30 edges and instead proved it can't be done this way: for any smaller grid, the configurations the argument is supposed to rule out form a genuine one-parameter family that satisfies every algebraic hypothesis the method uses. So 6×5 = 30 is optimal for this approach (down from their 20×5 = 100); same theorem, smaller gadget, now with a matching lower bound: github.com/rohanarun/unit-distance-grid-refinement
+
+**Alt text for the chart:**
+Step chart of "edges in the final algebraic witness" over time. A black dot marks OpenAI's preprint on Sep 23 at 100 edges. On Oct 9 the general case drops to 36 and the common-line case to 18. On Oct 10 the general case steps to 32 and then 30, the one-line case ends at 24 and the common-line case at 12. A dashed horizontal line at 30 is labelled "proved floor for the method".
+
+**Thread reply (the one-line reason):**
+Count unknowns: positions and ratios give 2(N+j)+Nj; the equations give Nj+(N−1)(j−1); isometries eat 3. What's left is ≥1 exactly when (N−3)(j−3) ≤ 4 — every grid under 30 edges. An exact finite-field Jacobian check shows every ratio really moves along that leftover direction, and a monic-equation trick lifts the check to characteristic zero.
+
+---
+
 ## PR #3 — thirty edges via bipartite rigidity (Oct 10, 2026)
 
 **Main post (ELI25):**

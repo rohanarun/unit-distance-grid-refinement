@@ -11,7 +11,7 @@ An independent, AI-generated research draft prepared with Codex and Claude. We g
 | one locus is a line | 6×4 | 24 | 9×4 = 36 |
 | both loci the same line | 4×3 | 12 | 6×3 = 18 |
 
-A single 6×5 generic grid contains the 6×4 and 4×3 sub-grids, so one selection of thirty edges covers every case.
+A single 6×5 generic grid contains the 6×4 and 4×3 sub-grids, so one selection of thirty edges covers every case. **Thirty is also a floor:** no complete grid with fewer than 30 edges can work for any argument that uses only the algebraic hypotheses of the source's final section (see below).
 
 ![Progress chart](progress/progress.png)
 
@@ -43,6 +43,10 @@ The rank bound splits by a spanning tree. Expanding a minor multilinearly in the
 
 This is the only place the note depends on an external theorem beyond the source. Both loci being lines is excluded here and covered by the 6×4 and 4×3 results.
 
+## Why 30 cannot be beaten this way
+
+The source's final section uses only four consequences of its hypotheses: the distance relation for each edge, rectangle constants in the constant field $k_0$, a derivation that is nonzero on every ratio, and generic positions. Configurations with prescribed rectangle constants form an algebraic family of dimension at least $2(N+j)-(N-1)(j-1)$; subtracting the three planar isometries leaves a genuine deformation exactly when $(N-3)(j-3)\le 4$, which includes every grid with fewer than 30 edges. Along that deformation every edge ratio varies (verified by an exact Jacobian computation over a finite field, which lifts to characteristic zero because the defining equations are monic in each ratio). Taking $k_0$ to be the constants of a derivation along the family gives a model in which all four hypotheses hold and no contradiction exists. So 6×5 is optimal among complete grids; going lower would need the height hypotheses beyond $k_0$, or a selection pattern other than a complete grid.
+
 The full conditional proof is in [proof.tex](proof.tex). It compiles with `tectonic proof.tex`. No compiled PDF is bundled.
 
 ## Reproduce
@@ -62,7 +66,7 @@ To regenerate the progress chart (needs `matplotlib`, not a test dependency): `p
 
 ## What the tests establish
 
-The twenty-one tests check symbolic invariance under translation, rotation and scaling; that the second velocity becomes exactly $v$ after scaling (1,000 seeded exact-rational proposals); that dilations are *not* a symmetry; the generator budgets 7, 5 and 3 together with the failing boundary counts 7, 5 and 3 left points; that collinear anchors give velocities parallel to the line (symbolic Leibniz rule plus 1,500 exact-rational proposals); the rank-two Cramer determinant's radical coefficients as two-by-two minors and the fourth-radical sign flip; the common-line Cramer solution, third-radical sign subtraction, and dependent-radical control; and, for the joint system, that the chosen spanning tree is spanning and avoids the core, the rigidity ranks 11/19 (generic) and 10/18 (on a circle) of the core, of $K_{6,5}$ and of $K_{6,5}$ minus the tree, the explicit conic motion, the two-edge attachment lemma, and that the full 30×33 system on exact rational data has rank 29 (generic) or 28 (circle) with every kernel vector having constant scalar part, while 7×4 does not.
+The twenty-five tests check symbolic invariance under translation, rotation and scaling; that the second velocity becomes exactly $v$ after scaling (1,000 seeded exact-rational proposals); that dilations are *not* a symmetry; the generator budgets 7, 5 and 3 together with the failing boundary counts 7, 5 and 3 left points; that collinear anchors give velocities parallel to the line (symbolic Leibniz rule plus 1,500 exact-rational proposals); the rank-two Cramer determinant's radical coefficients as two-by-two minors and the fourth-radical sign flip; the common-line Cramer solution, third-radical sign subtraction, and dependent-radical control; and, for the joint system, that the chosen spanning tree is spanning and avoids the core, the rigidity ranks 11/19 (generic) and 10/18 (on a circle) of the core, of $K_{6,5}$ and of $K_{6,5}$ minus the tree, the explicit conic motion, the two-edge attachment lemma, and that the full 30×33 system on exact rational data has rank 29 (generic) or 28 (circle) with every kernel vector having constant scalar part, while 7×4 does not; and the sharpness certificates: the dimension count, that every grid below 30 edges sits inside one of seven maximal shapes, that at an exact point over GF(1000003²) the fibre of the rectangle map is smooth and every ratio has a nonzero tangent for each maximal shape, and that for 6×5 and 8×4 the tangent space is exactly the isometries.
 
 These are algebraic checks of the displayed reduction. They do not construct the generic grid, verify the source's ultraproduct lemmas, or prove a new incidence bound.
 
