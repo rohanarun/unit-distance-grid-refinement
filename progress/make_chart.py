@@ -70,7 +70,7 @@ for k, s in enumerate(series):
     final = pts[-1]
     ax.annotate(f"{s['name']}: {final['grid']} = {final['edges']}", xy=(end, final['edges']),
                 xytext=(6, 0), textcoords='offset points', va='center', ha='left',
-                fontsize=10, color=INK)
+                fontsize=10, color=INK, bbox=dict(boxstyle='square,pad=0.15', fc=SURFACE, ec='none'))
 
 # Intermediate labels, de-duplicated when two branches share a value.
 seen = set()
@@ -91,6 +91,12 @@ ax.annotate(f"{base['label']} preprint, {date.fromisoformat(base['date']):%b %d}
             xy=(at(base['date']), base['edges']), xytext=(10, -3), textcoords='offset points',
             va='top', fontsize=10, color=INK, fontweight='bold')
 
+if 'floor' in DATA:
+    fl = DATA['floor']
+    ax.plot([at(base['date'], -24), end], [fl['edges']] * 2, color=INK2, lw=1,
+            ls=(0, (4, 3)), zorder=1)
+    ax.annotate(fl['label'], xy=(at(base['date'], -12), fl['edges']), xytext=(0, 5),
+                textcoords='offset points', fontsize=9, color=INK2, ha='left')
 ax.set_ylim(0, 110)
 ax.set_xlim(at(base['date'], -24), end + timedelta(days=10))
 ax.set_ylabel('edges in the final algebraic witness', color=INK2)

@@ -83,5 +83,10 @@
         }
       ]
     }
-  ]
+  ],
+  "floor": {
+    "edges": 30,
+    "date": "2026-10-10T22:00",
+    "label": "proved floor for the method (PR #4)"
+  }
 }
