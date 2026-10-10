@@ -33,6 +33,8 @@ plt.rcParams.update({
 
 
 def at(iso, hours=0):
+    if 'T' in iso:
+        return datetime.fromisoformat(iso) + timedelta(hours=hours)
     return datetime.combine(date.fromisoformat(iso), datetime.min.time()) + timedelta(hours=12 + hours)
 
 
@@ -42,8 +44,8 @@ ax.set_facecolor(SURFACE)
 
 base = DATA['baseline']
 series = DATA['series']
-first_change = min(p['date'] for s in series for p in s['points'][1:])
-last_change = max(p['date'] for s in series for p in s['points'])
+first_change = min(p['date'][:10] for s in series for p in s['points'][1:])
+last_change = max(p['date'][:10] for s in series for p in s['points'])
 end = at(last_change, 48)
 
 # Shared history: every branch inherits the source's grid until the first refinement.
