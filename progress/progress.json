@@ -1,0 +1,36 @@
+{
+  "metric": "Selected edges in the final algebraic witness (left points x right anchors)",
+  "baseline": {
+    "label": "OpenAI",
+    "date": "2026-09-23",
+    "grid": "20x5",
+    "edges": 100,
+    "source": "https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-saving-for-planar-unit-distances-September-23-2026"
+  },
+  "series": [
+    {
+      "name": "General case (rank two)",
+      "points": [
+        {"date": "2026-09-23", "grid": "20x5", "edges": 100, "who": "OpenAI preprint"},
+        {"date": "2026-10-09", "grid": "9x4", "edges": 36, "who": "initial draft (translation + rotation normalization)"},
+        {"date": "2026-10-10", "grid": "8x4", "edges": 32, "who": "PR #2 (scaling symmetry)"}
+      ]
+    },
+    {
+      "name": "One locus is a line",
+      "points": [
+        {"date": "2026-09-23", "grid": "20x5", "edges": 100, "who": "OpenAI preprint"},
+        {"date": "2026-10-09", "grid": "9x4", "edges": 36, "who": "initial draft (no separate treatment)"},
+        {"date": "2026-10-10", "grid": "6x4", "edges": 24, "who": "PR #2 (collinear anchors)"}
+      ]
+    },
+    {
+      "name": "Both loci the same line",
+      "points": [
+        {"date": "2026-09-23", "grid": "20x5", "edges": 100, "who": "OpenAI preprint"},
+        {"date": "2026-10-09", "grid": "6x3", "edges": 18, "who": "PR #1 (common-line branch)"},
+        {"date": "2026-10-10", "grid": "4x3", "edges": 12, "who": "PR #2 (collinear anchors)"}
+      ]
+    }
+  ]
+}
