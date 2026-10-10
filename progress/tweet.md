@@ -4,20 +4,7 @@
 
 **Main post (ELI25):**
 
-OpenAI's unit-distance paper ends with a "gotcha" step: pick a small grid of points, differentiate, and show a square root has to flip sign when it can't.
-
-They picked a 20×5 grid (100 edges). We're chipping away at how small that grid can be.
-
-Yesterday: 9×4 = 36 edges.
-Today: 8×4 = 32. And if either point-cloud sits on a straight line, 6×4 = 24. Both on the same line: 4×3 = 12.
-
-How? The equations don't care if you (1) slide everything, (2) spin everything, or (3) multiply every velocity by the same number. Nobody had used (3). That buys one fewer unknown, which buys one fewer point.
-
-Bonus: if the anchors are on a line, their velocities all point along that line after the spin — each costs 1 unknown instead of 2.
-
-Caveats: conditional on the paper's lemmas, no new exponent, AI-generated draft, not peer reviewed. Everything is checked symbolically with sympy in CI.
-
-Chart + proof + tests: github.com/rohanarun/unit-distance-grid-refinement
+OpenAI's unit-distance proof ends by checking a 20×5 grid of points (100 edges); by noticing the equations don't care if you rescale every velocity by the same number, we got that down to 8×4 = 32, and to 12 when everything sits on one line. Conditional on their lemmas, no new exponent, sympy-checked: github.com/rohanarun/unit-distance-grid-refinement
 
 **Alt text for the chart:**
 Step chart of "edges in the final algebraic witness" over time. A black dot marks OpenAI's preprint on Sep 23 at 100 edges (20×5 grid). On Oct 9 the general case drops to 36 and the common-line case to 18. On Oct 10 three branches end at 32 (general, 8×4), 24 (one locus is a line, 6×4) and 12 (both loci the same line, 4×3).
